@@ -1,0 +1,24 @@
+@import 'bootstrap/dist/css/bootstrap-reboot.css';
+@import 'bootstrap/dist/css/bootstrap-grid.css';
+
+@import 'antd/dist/antd.css';
+
+.ant-layout-header {
+  background-color: whitesmoke;
+  .logo {
+    float: left;
+    width: 120px;
+    height: 63px;
+    background: url(../assets/images/logo.jpg);
+    background-size: 100% 100%;
+  }
+}
+
+.ant-row-rtl #components-layout-demo-top-side .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+
+.site-layout-background {
+  background: #fff;
+}
