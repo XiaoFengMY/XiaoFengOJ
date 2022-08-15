@@ -8,7 +8,7 @@ interface RegistParams {
 }
 
 interface GetCaptcha {
-  captcha: string;
+  phone: string;
 }
 
 export type { RegistParams, GetCaptcha };
