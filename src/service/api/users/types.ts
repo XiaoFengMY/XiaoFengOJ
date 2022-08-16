@@ -7,7 +7,10 @@ interface RegistParams {
   passwordConfirmation: string;
 }
 
+// type TypeState = 'login' | 'regist'
+
 interface GetCaptcha {
+  type: 'login' | 'regist';
   phone: string;
 }
 

@@ -16,8 +16,8 @@ const CaptchaButton: React.FC<Props> = ({ phone }) => {
   const handleReset = () => {
     setBtnDisabled(true);
     timeChange = window.setInterval(() => setTime((t) => t - 1), 1000);
-    getCaptcha({ phone }).then((res) => {
-      console.log('res: ', res);
+    getCaptcha({ type: 'regist', phone }).then((res) => {
+      console.log('res-getcaptcha: ', res);
     });
   };
   useEffect(() => {
