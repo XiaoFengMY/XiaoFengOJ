@@ -18,7 +18,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response: AxiosResponse<any>) => {
     // 对响应数据做点什么
-    message.error(response.data.message);
+    console.log(response.data);
     return response.data;
   },
   (error: AxiosError) => {
