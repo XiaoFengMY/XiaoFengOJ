@@ -23,6 +23,7 @@ const Register: React.FC = () => {
   const onFinish = (values: FormValue): any => {
     regist(values).then((res) => {
       if (res) {
+        localStorage.token = res.data;
         navigate('/');
       }
     });
@@ -87,6 +88,18 @@ const Register: React.FC = () => {
                 <CaptchaButton phone={phone} type="regist" />
               </Col>
             </Row>
+          </Form.Item>
+          <Form.Item
+            name="username"
+            rules={[
+              {
+                required: true,
+                message: '请输入用户名!',
+              },
+            ]}
+            style={{ borderBottom: '1px solid #DCDCDC' }}
+          >
+            <Input onChange={getPhone} type="text" placeholder="请输入用户名" bordered={false} />
           </Form.Item>
           <Form.Item
             name="password"

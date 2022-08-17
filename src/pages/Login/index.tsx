@@ -21,6 +21,7 @@ const Login: React.FC = () => {
     data.key = keyword;
     login(values).then((res) => {
       if (res) {
+        localStorage.token = res.data;
         navigate('/');
       }
     });

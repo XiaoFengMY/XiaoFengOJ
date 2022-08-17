@@ -9,7 +9,7 @@ instance.interceptors.request.use(
     config,
   (error) => {
     // 对请求错误做些什么
-    message.error(error.message);
+    if (error.message) message.error(error.message);
     Promise.reject(error);
   },
 );
@@ -18,18 +18,17 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response: AxiosResponse<any>) => {
     // 对响应数据做点什么
+    console.log('resdate: ', response.data);
     const sucessMessage: any = response.data.message;
-    message.success(sucessMessage);
+    if (sucessMessage) message.success(sucessMessage);
     return response.data;
   },
   (error: AxiosError) => {
     // 对响应错误做点什么
     if (error.response) {
       const errMessage: any = error.response;
-      message.error(errMessage.data.message);
-    } else {
-      message.error(error.message);
-    }
+      if (errMessage.data.message) message.error(errMessage.data.message);
+    } else if (error.message) message.error(error.message);
     Promise.reject(error);
   },
 );
