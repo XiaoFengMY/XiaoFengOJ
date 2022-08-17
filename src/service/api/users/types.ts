@@ -7,11 +7,16 @@ interface RegistParams {
   passwordConfirmation: string;
 }
 
-// type TypeState = 'login' | 'regist'
+interface LoginParams {
+  phone: number;
+  key: string;
+  captcha?: number;
+  password?: string;
+}
 
 interface GetCaptcha {
   type: 'login' | 'regist';
   phone: string;
 }
 
-export type { RegistParams, GetCaptcha };
+export type { RegistParams, GetCaptcha, LoginParams };
