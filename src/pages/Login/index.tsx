@@ -35,7 +35,7 @@ const Login: React.FC = () => {
     setKeyWord(key);
   };
   return (
-    <div className="bg">
+    <div className="login">
       <div className="heard">
         <h1 className="title">登录</h1>
       </div>

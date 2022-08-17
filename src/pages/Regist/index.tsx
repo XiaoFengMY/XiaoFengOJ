@@ -29,11 +29,11 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="bg">
+    <div className="regist">
       <div className="heard">
         <h1 className="title">注册</h1>
       </div>
-      <div className="login_card">
+      <div className="regist_card">
         <Form
           name="normal_login"
           className="login-form"
