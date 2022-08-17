@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Input, InputNumber, Button, Checkbox, Row, Col, message } from 'antd';
+import { Form, Input, InputNumber, Button, Checkbox, Row, Col } from 'antd';
 import { regist } from '../../service/api/users';
 import './regist.scss';
 import CaptchaButton from '../../components/Button/CaptchaButton';
@@ -20,10 +20,9 @@ const Register: React.FC = () => {
   const getPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhone(e.target.value);
   };
-  const onFinish = (values: FormValue) => {
+  const onFinish = (values: FormValue): any => {
     regist(values).then((res) => {
       if (res) {
-        message.success('注册成功');
         navigate('/');
       }
     });
@@ -85,7 +84,7 @@ const Register: React.FC = () => {
                 />
               </Col>
               <Col span={6} style={{ float: 'right' }}>
-                <CaptchaButton phone={phone} />
+                <CaptchaButton phone={phone} type="regist" />
               </Col>
             </Row>
           </Form.Item>

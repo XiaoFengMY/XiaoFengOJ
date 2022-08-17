@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Input, Button, Tabs, Row, Col, message } from 'antd';
+import { Form, Input, InputNumber, Button, Tabs, Row, Col } from 'antd';
 import CaptchaButton from '../../components/Button/CaptchaButton';
 import { login } from '../../service/api/users';
 import './login.scss';
@@ -21,7 +21,6 @@ const Login: React.FC = () => {
     data.key = keyword;
     login(values).then((res) => {
       if (res) {
-        message.success('注册成功');
         navigate('/');
       }
     });
@@ -56,7 +55,7 @@ const Login: React.FC = () => {
               onFinish={onFinish}
             >
               <Form.Item
-                name="username"
+                name="phone"
                 rules={[
                   {
                     required: true,
@@ -69,7 +68,7 @@ const Login: React.FC = () => {
                 ]}
                 style={{ borderBottom: '1px solid #DCDCDC' }}
               >
-                <Input placeholder="请输入手机号 / 用户名" bordered={false} />
+                <Input placeholder="请输入手机号" bordered={false} />
               </Form.Item>
               <Form.Item
                 name="password"
@@ -124,7 +123,7 @@ const Login: React.FC = () => {
                 ]}
                 style={{ borderBottom: '1px solid #DCDCDC' }}
               >
-                <Input placeholder="请输入手机号" bordered={false} />
+                <Input placeholder="请输入手机号" onChange={getPhone} bordered={false} />
               </Form.Item>
               <Form.Item
                 name="captcha"
@@ -133,15 +132,15 @@ const Login: React.FC = () => {
               >
                 <Row>
                   <Col span={18}>
-                    <Input
+                    <InputNumber
+                      style={{ width: '100%' }}
                       bordered={false}
-                      onChange={getPhone}
-                      type="password"
+                      maxLength={6}
                       placeholder="请输入验证码"
                     />
                   </Col>
                   <Col span={6} style={{ float: 'right' }}>
-                    <CaptchaButton phone={phone} />
+                    <CaptchaButton phone={phone} type="login" />
                   </Col>
                 </Row>
               </Form.Item>
