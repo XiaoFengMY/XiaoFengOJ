@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Input, InputNumber, Button, Checkbox, Row, Col } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { Form, Input, InputNumber, Button, Checkbox, Row, Col, message } from 'antd';
 import { regist } from '../../service/api/users';
 import './regist.scss';
 import CaptchaButton from '../../components/Button/CaptchaButton';
@@ -12,17 +13,22 @@ interface FormValue {
   remember: boolean;
 }
 
-const onFinish = (values: FormValue) => {
-  regist(values).then((res) => {
-    console.log('res: ', res);
-  });
-};
-
 const Register: React.FC = () => {
   const [phone, setPhone] = useState('');
+  const navigate = useNavigate();
+
   const getPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhone(e.target.value);
   };
+  const onFinish = (values: FormValue) => {
+    regist(values).then((res) => {
+      if (res) {
+        message.success('注册成功');
+        navigate('/');
+      }
+    });
+  };
+
   return (
     <div className="bg">
       <div className="heard">
